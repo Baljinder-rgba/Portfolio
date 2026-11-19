@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Baljinder Singh — Unity Game Developer portfolio featuring game projects and gameplay systems." />
+  <title>Baljinder Singh — Unity Game Developer</title>
+  <style>
+    /* ==========================================================================
+       Baljinder Singh — Game Developer Portfolio (Single-File Bundle)
+       Traditional 2010–2020 Personal Developer Aesthetic + Subtle Menu Cues
+       ========================================================================== */
+
+    :root {
+      /* Light Theme (Default): Warm Off-White Paper & Burnt Orange */
+      --bg: #f6f4ef;
+      --surface: #ffffff;
+      --surface-alt: #ece8df;
+      --text: #22211e;
+      --text-muted: #5a5750;
+      --border: #d4cfc3;
+      --border-strong: #9e9788;
+      --accent: #b81e2d;
+      --accent-hover: #961414;
+      --accent-text: #ffffff;
+      --secondary: #4e5948;
+      --code-bg: #ebe6dc;
+      --focus-ring: #b81e1e;
+      --max-width: 980px;
+    }
+
+    [data-theme="dark"] {
+      /* Dark Theme: Warm Charcoal & Muted Amber-Orange */
+      --bg: #35322f;
+      --surface: #201f1c;
+      --surface-alt: #282622;
+      --text: #e6e2d8;
+      --text-muted: #a39e93;
+      --border: #36332d;
+      --border-strong: #575248;
+      --accent: #b81e2d;
+      --accent-hover: #961414;
+      --accent-text: #171614;
+      --secondary: #8a9980;
+      --code-bg: #262420;
+      --focus-ring: #ba2d2d;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .page-view[hidden] {
+      display: none;
+    }
+
+    /* ==========================================================================
+       Navigation Bar
+       ========================================================================== */
+    .site-header {
+      background-color: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 16px;
+    }
+
+    .brand {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-mark {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: var(--accent);
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      border-radius: 3px;
+      transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background-color: var(--surface-alt);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      font-weight: 600;
+      border-color: var(--border);
+      background-color: var(--bg);
+    }
+
+    .nav-links a.active::before {
+      content: "▸ ";
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      background-color: var(--surface-alt);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      border-radius: 3px;
+      padding: 6px 11px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: border-color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .menu-toggle {
+      display: none;
+      background-color: var(--surface-alt);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      border-radius: 3px;
+      padding: 6px 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* ==========================================================================
+       Typography & Common Elements
+       ========================================================================== */
+    main {
+      padding: 48px 0 72px;
+    }
+
+    .page-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 36px;
+    }
+
+    .eyebrow {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin: 0 0 8px;
+    }
+
+    h1 {
+      font-size: clamp(1.85rem, 3.5vw, 2.5rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+
+    h2 {
+      font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      line-height: 1.35;
+      margin: 0 0 8px;
+      font-weight: 700;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--text-muted);
+      max-width: 65ch;
+      margin: 0;
+    }
+
+    .section-block {
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .section-link {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .section-link:hover {
+      text-decoration: underline;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 18px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      border-radius: 3px;
+      border: 1px solid var(--border-strong);
+      background-color: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: var(--accent-text);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: var(--accent-text);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      padding: 3px 8px;
+      background-color: var(--code-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    /* ==========================================================================
+       Home Hero & Subtle Game-Menu Element
+       ========================================================================== */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.85fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--secondary);
+      margin: 0 0 16px;
+    }
+
+    .menu-panel {
+      background-color: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .menu-panel-bar {
+      background-color: var(--surface-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .menu-panel-body {
+      padding: 16px;
+    }
+
+    .spec-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .spec-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 7px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .spec-list li:last-child {
+      border-bottom: none;
+    }
+
+    .spec-label {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .spec-value {
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .menu-quick-nav {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .menu-quick-nav a {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      padding: 5px 8px;
+      color: var(--text);
+      border-left: 2px solid transparent;
+    }
+
+    .menu-quick-nav a:hover {
+      background-color: var(--surface-alt);
+      border-left-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .menu-quick-nav a:hover::before {
+      content: "> ";
+    }
+
+    /* ==========================================================================
+       Project Entries
+       ========================================================================== */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--border-strong);
+      border-radius: 3px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.15s ease;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      border-left-color: var(--accent);
+    }
+
+    .project-thumb {
+      background-color: var(--surface-alt);
+      border-bottom: 1px solid var(--border);
+      padding: 20px;
+      height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .project-thumb img {
+      max-height: 125px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .project-genre {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.72rem;
+      padding: 2px 7px;
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .project-content {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-content p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin: 0 0 16px;
+      flex-grow: 1;
+    }
+
+    .project-actions {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .project-actions a {
+      color: var(--accent);
+    }
+
+    .project-actions a:hover {
+      text-decoration: underline;
+    }
+
+    .project-actions .repo-link {
+      color: var(--text-muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.8rem;
+    }
+
+    .project-actions .repo-link:hover {
+      color: var(--text);
+    }
+
+    .project-select-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .project-entry {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--border-strong);
+      border-radius: 3px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      transition: border-color 0.15s ease;
+    }
+
+    .project-entry:hover {
+      border-color: var(--accent);
+      border-left-color: var(--accent);
+    }
+
+    .project-entry-media {
+      background-color: var(--surface-alt);
+      border-right: 1px solid var(--border);
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .project-entry-media img {
+      max-height: 140px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .project-entry-body {
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-entry-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .project-entry-index {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--accent);
+      margin-right: 8px;
+    }
+
+    .project-entry-type {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      background-color: var(--surface-alt);
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+    }
+
+    .project-entry-desc {
+      color: var(--text-muted);
+      margin: 0 0 16px;
+      font-size: 0.96rem;
+    }
+
+    .project-entry-footer {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    /* ==========================================================================
+       Individual Project Detail View
+       ========================================================================== */
+    .breadcrumb {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumb a {
+      color: var(--accent);
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .detail-layout {
+      display: grid;
+      grid-template-columns: 1.45fr 0.75fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .detail-visual {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 28px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .detail-visual img {
+      max-height: 210px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .detail-section {
+      margin-bottom: 28px;
+    }
+
+    .detail-section h2 {
+      font-size: 1.25rem;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 14px;
+    }
+
+    .feature-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text);
+    }
+
+    .feature-list li {
+      margin-bottom: 8px;
+    }
+
+    .detail-sidebar {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 20px;
+    }
+
+    .detail-sidebar h3 {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 14px;
+    }
+
+    .sidebar-group {
+      margin-bottom: 18px;
+    }
+
+    .sidebar-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .sidebar-label {
+      display: block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .sidebar-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sidebar-actions .btn {
+      width: 100%;
+    }
+
+    /* ==========================================================================
+       About View & Skills Grid
+       ========================================================================== */
+    .about-bio {
+      max-width: 68ch;
+      font-size: 1.02rem;
+    }
+
+    .about-bio p {
+      margin: 0 0 16px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .skill-box {
+      background-color: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 18px 20px;
+    }
+
+    .skill-box h3 {
+      font-size: 1rem;
+      color: var(--accent);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-box ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 0.94rem;
+    }
+
+    .skill-box li {
+      margin-bottom: 4px;
+    }
+
+    /* ==========================================================================
+       Callout Box & Footer & Back-to-Top
+       ========================================================================== */
+    .callout-box {
+      background-color: var(--surface);
+      border: 1px solid var(--border-strong);
+      border-left: 4px solid var(--accent);
+      border-radius: 3px;
+      padding: 24px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .callout-box p {
+      margin: 4px 0 0;
+      color: var(--text-muted);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--border);
+      background-color: var(--surface);
+      padding: 24px 0;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 90;
+      padding: 8px 12px;
+      background-color: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border-strong);
+      border-radius: 3px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.15s ease, visibility 0.15s ease, border-color 0.15s ease;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ==========================================================================
+       Responsive Design
+       ========================================================================== */
+    @media (max-width: 860px) {
+
+      .hero-grid,
+      .detail-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background-color: var(--surface);
+        border-bottom: 1px solid var(--border-strong);
+        padding: 14px 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 9px 12px;
+      }
+
+      .project-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-entry {
+        grid-template-columns: 1fr;
+      }
+
+      .project-entry-media {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav-bar">
+      <a class="brand" href="#home" data-route="home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        BALJINDER.DEV
+      </a>
+
+      <div class="nav-controls">
+        <nav aria-label="Primary Navigation">
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#home" data-route="home" class="active" aria-current="page">Home</a></li>
+            <li><a href="#projects" data-route="projects">Projects</a></li>
+            <li><a href="#about" data-route="about">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode">
+          ☾ Dark Mode
+        </button>
+
+        <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks"
+          aria-label="Toggle navigation menu">
+          ☰ Menu
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== 1. HOME ==================== -->
+    <div id="view-home" class="page-view">
+      <div class="container">
+        <section class="hero-grid" aria-labelledby="hero-heading">
+          <div>
+            <p class="eyebrow">Unity · C# · Gameplay Systems</p>
+            <h1 id="hero-heading">Baljinder Singh</h1>
+            <p class="hero-subtitle">Unity Game Developer</p>
+            <p class="lead">
+              I'm a game developer focused on creating engaging gameplay systems, responsive controls, and memorable
+              multiplayer experiences. I turn ideas into playable worlds, one mechanic at a time.
+            </p>
+            <div class="btn-group">
+              <a class="btn btn-primary" href="#projects" data-route="projects">Explore Projects</a>
+              <a class="btn" href="contact.html">Get in Touch</a>
+            </div>
+          </div>
+
+          <aside class="menu-panel" aria-label="Developer Profile Summary">
+            <div class="menu-panel-bar">
+              <span>DEV_PROFILE.CFG</span>
+              <span>STATUS: READY</span>
+            </div>
+            <div class="menu-panel-body">
+              <ul class="spec-list">
+                <li>
+                  <span class="spec-label">DEVELOPER</span>
+                  <span class="spec-value">Baljinder Singh</span>
+                </li>
+                <li>
+                  <span class="spec-label">ROLE</span>
+                  <span class="spec-value">Unity Game Developer</span>
+                </li>
+                <li>
+                  <span class="spec-label">ENGINE</span>
+                  <span class="spec-value">Unity</span>
+                </li>
+                <li>
+                  <span class="spec-label">LANGUAGE</span>
+                  <span class="spec-value">C#</span>
+                </li>
+              </ul>
+              <nav class="menu-quick-nav" aria-label="Quick Menu">
+                <a href="#projects" data-route="projects">SELECT PROJECT [03]</a>
+                <a href="#about" data-route="about">VIEW SKILLS &amp; TOOLS</a>
+                <a href="contact.html">OPEN CONTACT PAGE</a>
+              </nav>
+            </div>
+          </aside>
+        </section>
+
+        <section class="section-block" aria-labelledby="selected-projects-heading">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Portfolio</p>
+              <h2 id="selected-projects-heading">Selected Projects</h2>
+            </div>
+            <a class="section-link" href="#projects" data-route="projects">View all projects →</a>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="project-thumb">
+                <span class="project-genre">Hypercasual · 3D</span>
+                <img src="assets/pics/CarNer_Turn_Logo.png" alt="CarNer Turn game logo" />
+              </div>
+              <div class="project-content">
+                <h3>CarNer Turn</h3>
+                <p>A turn-based endless runner car game with procedurally generated tracks and vehicles. Designed for
+                  mobile, PC, and web.</p>
+                <ul class="tag-list" aria-label="Technologies used">
+                  <li class="tag">Unity</li>
+                  <li class="tag">C#</li>
+                  <li class="tag">Gameplay programming</li>
+                </ul>
+                <div class="project-actions">
+                  <a href="#carner-turn" data-route="carner-turn">Project details →</a>
+                  <a class="repo-link" href="https://github.com/Baljinder-rgba/CarGame" target="_blank"
+                    rel="noopener noreferrer">GitHub ↗</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-thumb">
+                <span class="project-genre">Runner · 3D</span>
+                <img src="assets/pics/Endless_Runner_Logo.png" alt="Endless Runner game logo" />
+              </div>
+              <div class="project-content">
+                <h3>Endless Runner</h3>
+                <p>A responsive character controller, smooth camera follow, touch input, procedurally generated paths,
+                  multiple character skin options, and UI.</p>
+                <ul class="tag-list" aria-label="Technologies used">
+                  <li class="tag">Unity</li>
+                  <li class="tag">C#</li>
+                  <li class="tag">Character Controller</li>
+                </ul>
+                <div class="project-actions">
+                  <a href="#endless-runner" data-route="endless-runner">Project details →</a>
+                  <a class="repo-link" href="https://github.com/Baljinder-rgba/EndlessRunner" target="_blank"
+                    rel="noopener noreferrer">GitHub ↗</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card">
+              <div class="project-thumb">
+                <span class="project-genre">Hypercasual · 2D</span>
+                <img src="assets/pics/Drop_Stack_Logo.png" alt="Drop Stack game logo" />
+              </div>
+              <div class="project-content">
+                <h3>Drop Stack</h3>
+                <p>A physics-based tower-stacking game featuring realistic block weight and momentum, intuitive one-tap
+                  controls, and offline playability.</p>
+                <ul class="tag-list" aria-label="Technologies used">
+                  <li class="tag">Unity</li>
+                  <li class="tag">Shaders</li>
+                  <li class="tag">RenderTexture</li>
+                </ul>
+                <div class="project-actions">
+                  <a href="#drop-stack" data-route="drop-stack">Project details →</a>
+                  <a class="repo-link" href="https://github.com/Baljinder-rgba/StackingGame" target="_blank"
+                    rel="noopener noreferrer">GitHub ↗</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section-block" aria-labelledby="home-contact-heading">
+          <div class="callout-box">
+            <div>
+              <h2 id="home-contact-heading">Have a game project or collaboration in mind?</h2>
+              <p>Feel free to reach out to discuss Unity development, gameplay systems, or opportunities.</p>
+            </div>
+            <a class="btn btn-primary" href="contact.html">Get in Touch</a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ==================== 2. PROJECTS ==================== -->
+    <div id="view-projects" class="page-view" hidden>
+      <div class="container">
+        <header class="page-header">
+          <p class="eyebrow">Project Archive · 03 Entries</p>
+          <h1>Projects</h1>
+          <p class="lead">Select a project entry below to inspect its overview, key features, and source repository.</p>
+        </header>
+
+        <section class="project-select-list" aria-label="Project list">
+          <article class="project-entry">
+            <div class="project-entry-media">
+              <img src="assets/pics/CarNer_Turn_Logo.png" alt="CarNer Turn game logo" />
+            </div>
+            <div class="project-entry-body">
+              <div>
+                <div class="project-entry-header">
+                  <h2><span class="project-entry-index">[01]</span>CarNer Turn</h2>
+                  <span class="project-entry-type">Hypercasual · 3D</span>
+                </div>
+                <p class="project-entry-desc">
+                  A turn-based endless runner car game with procedurally generated tracks and vehicles. Designed for
+                  mobile, PC, and web.
+                </p>
+                <ul class="tag-list" aria-label="Technologies used">
+                  <li class="tag">Unity</li>
+                  <li class="tag">C#</li>
+                  <li class="tag">Gameplay programming</li>
+                </ul>
+              </div>
+              <div class="project-entry-footer">
+                <a class="btn btn-primary" href="#carner-turn" data-route="carner-turn">Open Project Details</a>
+                <a class="btn" href="https://github.com/Baljinder-rgba/CarGame" target="_blank"
+                  rel="noopener noreferrer">GitHub Repository ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-entry">
+            <div class="project-entry-media">
+              <img src="assets/pics/Endless_Runner_Logo.png" alt="Endless Runner game logo" />
+            </div>
+            <div class="project-entry-body">
+              <div>
+                <div class="project-entry-header">
+                  <h2><span class="project-entry-index">[02]</span>Endless Runner</h2>
+                  <span class="project-entry-type">Runner · 3D</span>
+                </div>
+                <p class="project-entry-desc">
+                  A responsive character controller, smooth camera follow, touch input, procedurally generated paths,
+                  multiple character skin options, and UI.
+                </p>
+                <ul class="tag-list" aria-label="Technologies used">
+                  <li class="tag">Unity</li>
+                  <li class="tag">C#</li>
+                  <li class="tag">Character Controller</li>
+                </ul>
+              </div>
+              <div class="project-entry-footer">
+                <a class="btn btn-primary" href="#endless-runner" data-route="endless-runner">Open Project Details</a>
+                <a class="btn" href="https://github.com/Baljinder-rgba/EndlessRunner" target="_blank"
+                  rel="noopener noreferrer">GitHub Repository ↗</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-entry">
+            <div class="project-entry-media">
+              <img src="assets/pics/Drop_Stack_Logo.png" alt="Drop Stack game logo" />
+            </div>
+            <div class="project-entry-body">
+              <div>
+                <div class="project-entry-header">
+                  <h2><span class="project-entry-index">[03]</span>Drop Stack</h2>
+                  <span class="project-entry-type">Hypercasual · 2D</span>
+                </div>
+                <p class="project-entry-desc">
+                  A physics-based tower-stacking game featuring realistic block weight and momentum, intuitive one-tap
+                  controls, and offline playability.
+                </p>
+                <ul class="tag-list" aria-label="Technologies used">
+                  <li class="tag">Unity</li>
+                  <li class="tag">Shaders</li>
+                  <li class="tag">RenderTexture</li>
+                </ul>
+              </div>
+              <div class="project-entry-footer">
+                <a class="btn btn-primary" href="#drop-stack" data-route="drop-stack">Open Project Details</a>
+                <a class="btn" href="https://github.com/Baljinder-rgba/StackingGame" target="_blank"
+                  rel="noopener noreferrer">GitHub Repository ↗</a>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </div>
+
+    <!-- ==================== 3. CARNER TURN ==================== -->
+    <div id="view-carner-turn" class="page-view" hidden>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="#projects" data-route="projects">← Back to Projects</a> / CarNer Turn
+        </nav>
+
+        <header class="page-header">
+          <p class="eyebrow">Hypercasual · 3D</p>
+          <h1>CarNer Turn</h1>
+        </header>
+
+        <div class="detail-layout">
+          <div>
+            <div class="detail-visual">
+              <img src="assets/pics/CarNer_Turn_Logo.png" alt="CarNer Turn game logo" />
+            </div>
+
+            <section class="detail-section" aria-labelledby="ct-overview">
+              <h2 id="ct-overview">Project Overview</h2>
+              <p>
+                CarNer Turn is a 3D hypercasual game built around turn-based vehicle navigation on an endless course. It
+                is designed to run across mobile, PC, and web platforms.
+              </p>
+            </section>
+
+            <section class="detail-section" aria-labelledby="ct-desc">
+              <h2 id="ct-desc">Description</h2>
+              <p>
+                A turn-based endless runner car game with procedurally generated tracks and vehicles. Designed for
+                mobile, PC, and web.
+              </p>
+            </section>
+
+            <section class="detail-section" aria-labelledby="ct-features">
+              <h2 id="ct-features">Key Features</h2>
+              <ul class="feature-list">
+                <li>Turn-based endless runner car gameplay</li>
+                <li>Procedurally generated tracks</li>
+                <li>Procedurally generated vehicles</li>
+                <li>Cross-platform support for mobile, PC, and web</li>
+              </ul>
+            </section>
+          </div>
+
+          <aside class="detail-sidebar" aria-label="Project Specifications">
+            <h3>Project Info</h3>
+            <div class="sidebar-group">
+              <span class="sidebar-label">Category</span>
+              <strong>Hypercasual · 3D</strong>
+            </div>
+            <div class="sidebar-group">
+              <span class="sidebar-label">Target Platforms</span>
+              <strong>Mobile, PC, Web</strong>
+            </div>
+            <div class="sidebar-group">
+              <span class="sidebar-label">Technologies Used</span>
+              <ul class="tag-list">
+                <li class="tag">Unity</li>
+                <li class="tag">C#</li>
+                <li class="tag">Gameplay programming</li>
+              </ul>
+            </div>
+            <div class="sidebar-actions">
+              <a class="btn btn-primary" href="https://github.com/Baljinder-rgba/CarGame" target="_blank"
+                rel="noopener noreferrer">View on GitHub ↗</a>
+              <a class="btn" href="#projects" data-route="projects">← Return to Projects</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 4. ENDLESS RUNNER ==================== -->
+    <div id="view-endless-runner" class="page-view" hidden>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="#projects" data-route="projects">← Back to Projects</a> / Endless Runner
+        </nav>
+
+        <header class="page-header">
+          <p class="eyebrow">Runner · 3D</p>
+          <h1>Endless Runner</h1>
+        </header>
+
+        <div class="detail-layout">
+          <div>
+            <div class="detail-visual">
+              <img src="assets/pics/Endless_Runner_Logo.png" alt="Endless Runner game logo" />
+            </div>
+
+            <section class="detail-section" aria-labelledby="er-overview">
+              <h2 id="er-overview">Project Overview</h2>
+              <p>
+                Endless Runner is a 3D runner project focused on tight player movement, touch-based input handling,
+                camera tracking, and continuous path generation.
+              </p>
+            </section>
+
+            <section class="detail-section" aria-labelledby="er-desc">
+              <h2 id="er-desc">Description</h2>
+              <p>
+                A responsive character controller, smooth camera follow, touch input, procedurally generated paths,
+                multiple character skin options, and UI.
+              </p>
+            </section>
+
+            <section class="detail-section" aria-labelledby="er-features">
+              <h2 id="er-features">Key Features</h2>
+              <ul class="feature-list">
+                <li>Responsive character controller</li>
+                <li>Smooth camera follow system</li>
+                <li>Touch input handling</li>
+                <li>Procedurally generated paths</li>
+                <li>Multiple character skin options</li>
+                <li>Integrated user interface (UI)</li>
+              </ul>
+            </section>
+          </div>
+
+          <aside class="detail-sidebar" aria-label="Project Specifications">
+            <h3>Project Info</h3>
+            <div class="sidebar-group">
+              <span class="sidebar-label">Category</span>
+              <strong>Runner · 3D</strong>
+            </div>
+            <div class="sidebar-group">
+              <span class="sidebar-label">Core Focus</span>
+              <strong>Character Movement &amp; Procedural Paths</strong>
+            </div>
+            <div class="sidebar-group">
+              <span class="sidebar-label">Technologies Used</span>
+              <ul class="tag-list">
+                <li class="tag">Unity</li>
+                <li class="tag">C#</li>
+                <li class="tag">Character Controller</li>
+              </ul>
+            </div>
+            <div class="sidebar-actions">
+              <a class="btn btn-primary" href="https://github.com/Baljinder-rgba/EndlessRunner" target="_blank"
+                rel="noopener noreferrer">View on GitHub ↗</a>
+              <a class="btn" href="#projects" data-route="projects">← Return to Projects</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 5. DROP STACK ==================== -->
+    <div id="view-drop-stack" class="page-view" hidden>
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="#projects" data-route="projects">← Back to Projects</a> / Drop Stack
+        </nav>
+
+        <header class="page-header">
+          <p class="eyebrow">Hypercasual · 2D</p>
+          <h1>Drop Stack</h1>
+        </header>
+
+        <div class="detail-layout">
+          <div>
+            <div class="detail-visual">
+              <img src="assets/pics/Drop_Stack_Logo.png" alt="Drop Stack game logo" />
+            </div>
+
+            <section class="detail-section" aria-labelledby="ds-overview">
+              <h2 id="ds-overview">Project Overview</h2>
+              <p>
+                Drop Stack is a 2D hypercasual stacking game built around physics-driven block placement, custom shader
+                rendering, and accessible single-tap controls.
+              </p>
+            </section>
+
+            <section class="detail-section" aria-labelledby="ds-desc">
+              <h2 id="ds-desc">Description</h2>
+              <p>
+                A physics-based tower-stacking game featuring realistic block weight and momentum, intuitive one-tap
+                controls, and offline playability.
+              </p>
+            </section>
+
+            <section class="detail-section" aria-labelledby="ds-features">
+              <h2 id="ds-features">Key Features</h2>
+              <ul class="feature-list">
+                <li>Physics-based tower-stacking mechanics</li>
+                <li>Realistic block weight and momentum</li>
+                <li>Intuitive one-tap controls</li>
+                <li>Offline playability</li>
+              </ul>
+            </section>
+          </div>
+
+          <aside class="detail-sidebar" aria-label="Project Specifications">
+            <h3>Project Info</h3>
+            <div class="sidebar-group">
+              <span class="sidebar-label">Category</span>
+              <strong>Hypercasual · 2D</strong>
+            </div>
+            <div class="sidebar-group">
+              <span class="sidebar-label">Play Mode</span>
+              <strong>Offline Playable · One-Tap</strong>
+            </div>
+            <div class="sidebar-group">
+              <span class="sidebar-label">Technologies Used</span>
+              <ul class="tag-list">
+                <li class="tag">Unity</li>
+                <li class="tag">Shaders</li>
+                <li class="tag">RenderTexture</li>
+              </ul>
+            </div>
+            <div class="sidebar-actions">
+              <a class="btn btn-primary" href="https://github.com/Baljinder-rgba/StackingGame" target="_blank"
+                rel="noopener noreferrer">View on GitHub ↗</a>
+              <a class="btn" href="#projects" data-route="projects">← Return to Projects</a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== 6. ABOUT ==================== -->
+    <div id="view-about" class="page-view" hidden>
+      <div class="container">
+        <header class="page-header">
+          <p class="eyebrow">About Me</p>
+          <h1>Artist by nature. Developer by choice.</h1>
+        </header>
+
+        <section class="about-bio" aria-label="Biography">
+          <p>
+            I enjoy the process of taking a gameplay idea from a rough prototype to a polished, playable feature. My
+            main focus is Unity development, with an interest in multiplayer architecture, player controllers, game
+            feel, and interactive systems.
+          </p>
+          <p>
+            I believe good games come from experimentation, thoughtful problem-solving, and attention to the small
+            details that make controls and interactions feel right.
+          </p>
+        </section>
+
+        <section class="section-block" aria-labelledby="skills-heading">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">Capabilities</p>
+              <h2 id="skills-heading">Skills and Tools</h2>
+            </div>
+          </div>
+
+          <div class="skills-grid">
+            <div class="skill-box">
+              <h3>Game Development</h3>
+              <ul>
+                <li>Unity</li>
+                <li>Gameplay programming</li>
+                <li>Prototyping</li>
+              </ul>
+            </div>
+
+            <div class="skill-box">
+              <h3>Programming</h3>
+              <ul>
+                <li>C#</li>
+                <li>Object-oriented programming</li>
+                <li>Debugging</li>
+              </ul>
+            </div>
+
+            <div class="skill-box">
+              <h3>Multiplayer</h3>
+              <ul>
+                <li>Unity Netcode for GameObjects</li>
+                <li>Networked systems</li>
+              </ul>
+            </div>
+
+            <div class="skill-box">
+              <h3>Player Systems</h3>
+              <ul>
+                <li>Character controllers</li>
+                <li>Camera systems</li>
+                <li>Input handling</li>
+              </ul>
+            </div>
+
+            <div class="skill-box">
+              <h3>Animation and Interaction</h3>
+              <ul>
+                <li>Animator state machines</li>
+                <li>Rigging</li>
+                <li>2D Animation</li>
+                <li>Weapon systems</li>
+                <li>UI</li>
+              </ul>
+            </div>
+
+            <div class="skill-box">
+              <h3>Tools and Workflow</h3>
+              <ul>
+                <li>Git</li>
+                <li>GitHub</li>
+                <li>Unity Editor</li>
+                <li>Shader workflows</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© 2026 Baljinder Singh · Game Developer</span>
+      <span class="mono">Built with clean HTML, CSS &amp; JS</span>
+    </div>
+  </footer>
+
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">↑ Top</button>
+
+  <script>
+    (function () {
+      const THEME_STORAGE_KEY = 'baljinder_portfolio_theme';
+      const VALID_ROUTES = [
+        'home',
+        'projects',
+        'carner-turn',
+        'endless-runner',
+        'drop-stack',
+        'about'
+      ];
+
+      // --- Theme Management (Light default, persisted in localStorage) ---
+      function getSavedTheme() {
+        try {
+          const saved = localStorage.getItem(THEME_STORAGE_KEY);
+          if (saved === 'dark' || saved === 'light') return saved;
+        } catch (e) { }
+        return 'light';
+      }
+
+      let currentTheme = getSavedTheme();
+      const themeToggleBtn = document.getElementById('themeToggle');
+
+      function applyTheme(theme) {
+        if (theme === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeToggleBtn.textContent = '☀ Light Mode';
+          themeToggleBtn.setAttribute('aria-label', 'Switch to light mode');
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+          themeToggleBtn.textContent = '☾ Dark Mode';
+          themeToggleBtn.setAttribute('aria-label', 'Switch to dark mode');
+        }
+      }
+
+      applyTheme(currentTheme);
+
+      themeToggleBtn.addEventListener('click', () => {
+        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        try {
+          localStorage.setItem(THEME_STORAGE_KEY, currentTheme);
+        } catch (e) { }
+        applyTheme(currentTheme);
+      });
+
+      // --- View Switching (#home, #projects, #carner-turn, etc.) ---
+      const views = {};
+      VALID_ROUTES.forEach((r) => {
+        views[r] = document.getElementById('view-' + r);
+      });
+
+      const primaryNavLinks = [...document.querySelectorAll('.nav-links a[data-route]')];
+      const menuBtn = document.getElementById('menuToggle');
+      const navList = document.getElementById('navLinks');
+
+      function setRoute(route, updateHash = true) {
+        const targetRoute = VALID_ROUTES.includes(route) ? route : 'home';
+
+        VALID_ROUTES.forEach((r) => {
+          if (views[r]) views[r].hidden = r !== targetRoute;
+        });
+
+        const navActiveRoute = ['carner-turn', 'endless-runner', 'drop-stack'].includes(targetRoute)
+          ? 'projects'
+          : targetRoute;
+
+        primaryNavLinks.forEach((link) => {
+          const isActive = link.getAttribute('data-route') === navActiveRoute;
+          link.classList.toggle('active', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'page');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+
+        if (updateHash) {
+          const newHash = '#' + targetRoute;
+          if (window.location.hash !== newHash) {
+            history.pushState({ route: targetRoute }, '', newHash);
+          }
+        }
+
+        window.scrollTo({ top: 0, behavior: 'auto' });
+      }
+
+      document.addEventListener('click', (event) => {
+        const routeTrigger = event.target.closest('[data-route]');
+        if (!routeTrigger) return;
+        const route = routeTrigger.getAttribute('data-route');
+        if (VALID_ROUTES.includes(route)) {
+          event.preventDefault();
+          setRoute(route, true);
+          if (navList.classList.contains('open')) {
+            navList.classList.remove('open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+            menuBtn.textContent = '☰ Menu';
+          }
+        }
+      });
+
+      window.addEventListener('popstate', () => {
+        const hashRoute = window.location.hash.replace(/^#/, '');
+        setRoute(hashRoute || 'home', false);
+      });
+
+      const initialHash = window.location.hash.replace(/^#/, '');
+      setRoute(VALID_ROUTES.includes(initialHash) ? initialHash : 'home', false);
+
+      // --- Mobile Navigation ---
+      menuBtn.addEventListener('click', () => {
+        const isOpen = navList.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(isOpen));
+        menuBtn.textContent = isOpen ? '✕ Close' : '☰ Menu';
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 680 && navList.classList.contains('open')) {
+          navList.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+          menuBtn.textContent = '☰ Menu';
+        }
+      });
+
+      // --- Back to Top ---
+      const backToTopBtn = document.getElementById('backToTop');
+      const toggleBackToTop = () => {
+        backToTopBtn.classList.toggle('visible', window.scrollY > 320);
+      };
+
+      window.addEventListener('scroll', toggleBackToTop, { passive: true });
+      toggleBackToTop();
+
+      backToTopBtn.addEventListener('click', () => {
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+      });
+    })();
+  </script>
+</body>
+
+</html>
